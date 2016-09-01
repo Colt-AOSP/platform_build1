@@ -1613,10 +1613,8 @@ class BlockDifference(object):
 
     call = ('block_image_update("{device}", '
             'package_extract_file("{partition}.transfer.list"), '
-            '"{new_data_name}", "{partition}.patch.dat") ||\n'
-            '  abort("E{code}: Failed to update {partition} image.");'.format(
-                device=self.device, partition=self.partition,
-                new_data_name=new_data_name, code=code))
+            '"{partition}.new.dat", "{partition}.patch.dat");'.format(
+                device=self.device, partition=self.partition, code=code))
     script.AppendExtra(script.WordWrap(call))
 
   def _HashBlocks(self, source, ranges): # pylint: disable=no-self-use
